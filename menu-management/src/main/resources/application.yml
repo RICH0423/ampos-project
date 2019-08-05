@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: menu-management
+
+---
+
+spring:
+  profiles: local
+  data.mongodb:
+    host: localhost
+    port: 27017
+    database: menu-management
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+pagination:
+  start: 0
+  size: 10

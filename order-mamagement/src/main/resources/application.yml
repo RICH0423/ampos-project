@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: order-management
+
+---
+
+spring:
+  profiles: local
+  data.mongodb:
+    host: localhost
+    port: 27017
+    database: order-management
+
+server:
+  port: 8081
+  servlet:
+    context-path: /api
+
+pagination:
+  start: 0
+  size: 10
