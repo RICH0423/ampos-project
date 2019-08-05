@@ -12,6 +12,9 @@ spring:
     host: localhost
     port: 27017
     database: menu-management
+    authentication-database: admin
+    username: ampos
+    password: ampospass
 
 server:
   port: 8080
@@ -21,3 +24,12 @@ server:
 pagination:
   start: 0
   size: 10
+
+eureka:
+  instance:
+    metadataMap:
+      zone: zone1
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+      preferSameZoneEureka: true
