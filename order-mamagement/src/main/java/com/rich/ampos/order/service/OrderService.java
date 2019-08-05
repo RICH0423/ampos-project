@@ -1,5 +1,6 @@
 package com.rich.ampos.order.service;
 
+import com.rich.ampos.order.model.OrderData;
 import com.rich.ampos.order.repository.entity.Order;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +13,7 @@ public interface OrderService {
 
     Optional<Order> find(String id);
 
-    Order create(Order order);
+    Order create(OrderData orderData);
 
     Order update(String id, Order order);
 }

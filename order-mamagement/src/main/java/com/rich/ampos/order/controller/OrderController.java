@@ -1,6 +1,7 @@
 package com.rich.ampos.order.controller;
 
 import com.rich.ampos.order.exception.EntityNotFoundException;
+import com.rich.ampos.order.model.OrderData;
 import com.rich.ampos.order.repository.entity.Order;
 import com.rich.ampos.order.service.OrderService;
 import com.rich.ampos.order.util.Constants;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @author rich
@@ -31,7 +34,7 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @GetMapping()
+    @GetMapping
     Page<Order> findAll(
             @RequestParam(value="page", required=false) Integer page,
             @RequestParam(value="size", required=false) Integer size) {
@@ -46,9 +49,8 @@ public class OrderController {
     }
 
     @PostMapping
-    Order createOrder(@RequestBody Order newOrder) {
-        // TODO: call get Menu api
-        return orderService.create(newOrder);
+    Order createOrder(@Valid @RequestBody OrderData orderData) {
+        return orderService.create(orderData);
     }
 
     @GetMapping("/{id}")
