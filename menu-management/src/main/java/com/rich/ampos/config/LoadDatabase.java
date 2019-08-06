@@ -57,6 +57,32 @@ public class LoadDatabase {
                             .build()
                     ) : Constants.INIT_DATA_EXISTS
             );
+
+            String menu4Id = "pre-created-4";
+            log.info(Constants.INIT_DATA_LOG, !menuRepository.existsById(menu4Id) ? menuRepository.save(
+                    Menu.builder()
+                            .id(menu4Id)
+                            .name("Kimchi")
+                            .description("Traditional side dish made from salted and fermented vegetables")
+                            .image("https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu4.jpg")
+                            .price(new BigDecimal(50))
+                            .type(Arrays.asList("Korean", "Radish", "Cabbage"))
+                            .build()
+                    ) : Constants.INIT_DATA_EXISTS
+            );
+
+            String menu5Id = "pre-created-5";
+            log.info(Constants.INIT_DATA_LOG, !menuRepository.existsById(menu5Id) ? menuRepository.save(
+                    Menu.builder()
+                            .id(menu5Id)
+                            .name("Partially fermented tea grown in the Alishan area")
+                            .description("Chinese steamed bun")
+                            .image("https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu5.jpg")
+                            .price(new BigDecimal(200))
+                            .type(Arrays.asList("Hot", "Non-alcoh", "ol"))
+                            .build()
+                    ) : Constants.INIT_DATA_EXISTS
+            );
         };
     }
 

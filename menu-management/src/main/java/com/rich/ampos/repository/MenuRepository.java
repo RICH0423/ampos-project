@@ -8,8 +8,6 @@ import org.springframework.data.mongodb.repository.Query;
 
 public interface MenuRepository extends MongoRepository<Menu, String> {
 
-    Page<Menu> findByNameOrDescriptionLike(String name, String description, Pageable pageable);
-
     @Query(value = "{ $or: [ { 'name' : {$regex:?0,$options:'i'} }, { 'description' : {$regex:?0,$options:'i'} } ] }")
     Page<Menu> search(String keyword, Pageable page);
 }

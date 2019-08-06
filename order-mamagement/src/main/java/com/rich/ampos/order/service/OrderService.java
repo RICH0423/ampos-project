@@ -7,13 +7,14 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.Optional;
 
+/**
+ * @author rich
+ */
 public interface OrderService {
 
     Page<Order> find(Pageable pageable);
 
-    Optional<Order> find(String id);
-
     Order create(OrderData orderData);
 
-    Order update(String id, Order order);
+    Order update(String id, OrderData orderData);
 }

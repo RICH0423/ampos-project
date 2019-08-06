@@ -1,6 +1,5 @@
 package com.rich.ampos.order.controller;
 
-import com.rich.ampos.order.exception.EntityNotFoundException;
 import com.rich.ampos.order.model.OrderData;
 import com.rich.ampos.order.repository.entity.Order;
 import com.rich.ampos.order.service.OrderService;
@@ -53,15 +52,9 @@ public class OrderController {
         return orderService.create(orderData);
     }
 
-    @GetMapping("/{id}")
-    Order findById(@PathVariable String id) {
-        return orderService.find(id)
-                .orElseThrow(() -> new EntityNotFoundException(id));
-    }
-
     @PutMapping("/{id}")
-    Order updateOrder(@RequestBody Order newOrder, @PathVariable String id) {
-        return orderService.update(id, newOrder);
+    Order updateOrder(@RequestBody OrderData orderData, @PathVariable String id) {
+        return orderService.update(id, orderData);
     }
 
 }

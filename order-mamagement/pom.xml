@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>com.rich.ampos</groupId>
-	<artifactId>order-mamagement</artifactId>
+	<artifactId>order-management</artifactId>
 	<version>1.0.0</version>
 	<name>order-management</name>
 	<description>Demo project for Spring Boot</description>

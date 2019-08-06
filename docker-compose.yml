@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  service-discovery:
+    image: rich0423/service-discovery:latest
+    ports:
+      - 8761:8761
+    networks:
+      - amposnet
+  menu-management:
+    image: rich0423/menu-management:latest
+    ports:
+      - 8080:8080
+    networks:
+      - amposnet
+  order-management:
+    image: rich0423/order-management:latest
+    ports:
+      - 8081:8081
+    networks:
+      - amposnet
+  mongo:
+    image: mongo:4.0.5
+    volumes:
+      - mongo-data-volume:/data/db
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ampos
+      MONGO_INITDB_ROOT_PASSWORD: ampospass
+    networks:
+      - amposnet
+
+  mongo-express:
+    image: mongo-express:0.49.0
+    restart: always
+    ports:
+      - 40000:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ampos
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ampospass
+    networks:
+      - amposnet
+
+volumes:
+  mongo-data-volume:
+networks:
+  amposnet:

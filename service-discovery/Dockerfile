@@ -1,9 +1,6 @@
 FROM openjdk:8-jdk-alpine
 MAINTAINER Rich.Lee <rich04230@gmail.com>
 
-RUN apk --no-cache add curl
-RUN apk add --no-cache bash
-
 VOLUME /tmp
 EXPOSE 8761
 

@@ -1,4 +1,4 @@
-package com.rich.ampos;
+package com.rich.ampos.eureka;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,9 +7,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ApplicationTests {
+public class ServiceDiscoveryApplicationTests {
 
 	@Test
 	public void contextLoads() {
 	}
+
 }
