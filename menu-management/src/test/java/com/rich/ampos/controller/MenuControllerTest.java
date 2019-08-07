@@ -61,9 +61,9 @@ public class MenuControllerTest {
     @Test
     public void findAll_GivenSpecificPage_ReturnsTheCorrectStatusAndData() throws Exception {
         List<Menu> menus = new ArrayList<>();
-        menus.add(new Menu("1", "menu1", "", "", new BigDecimal(100), new ArrayList()));
-        menus.add(new Menu("2", "menu2", "", "", new BigDecimal(200), new ArrayList()));
-        menus.add(new Menu("3", "menu3", "", "", new BigDecimal(300), new ArrayList()));
+        menus.add(Menu.builder().id("1").name("menu1").build());
+        menus.add(Menu.builder().id("2").name("menu2").build());
+        menus.add(Menu.builder().id("3").name("menu3").build());
 
         Pageable pageable = PageRequest.of(0, 10);
         given(menuService.find(pageable)).willReturn(new PageImpl<>(menus, pageable, menus.size()));
@@ -93,7 +93,6 @@ public class MenuControllerTest {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.id", is("1")))
                 .andExpect(jsonPath("$.name", is("menu1")));
-
     }
 
     @Test
@@ -103,7 +102,6 @@ public class MenuControllerTest {
         mockMvc.perform(delete("/" + Constants.API_MENU + "/{id}", menuId)
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk());
-
     }
 
     protected String convertToJson(Object o) throws IOException {
