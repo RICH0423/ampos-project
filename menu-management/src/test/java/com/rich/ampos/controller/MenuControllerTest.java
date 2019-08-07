@@ -29,6 +29,7 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -92,6 +93,16 @@ public class MenuControllerTest {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.id", is("1")))
                 .andExpect(jsonPath("$.name", is("menu1")));
+
+    }
+
+    @Test
+    public void deleteMenu_GivenSpecificMenuId_ReturnsTheCorrectStatus() throws Exception {
+        String menuId = "1";
+
+        mockMvc.perform(delete("/" + Constants.API_MENU + "/{id}", menuId)
+                .contentType(APPLICATION_JSON))
+                .andExpect(status().isOk());
 
     }
 
